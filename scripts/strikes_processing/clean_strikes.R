@@ -1,7 +1,7 @@
 library(tidyverse)
 library(lubridate)
 
-strikes_df <- read.csv("data/strikes_raw.csv")
+strikes_df <- read.csv("data/strikes/strikes_raw.csv")
 
 #clean repeated state names
 strikes_df <- strikes_df |>
@@ -11,6 +11,13 @@ strikes_df <- strikes_df |>
                        "NY" ~ "New York",
                        .default =  state
   ))
+
+#drop US territories
+strikes_df <- strikes_df |> 
+  filter(!state %in% c("Puerto Rico", 
+                       "Guam", 
+                       "U.S. Virgin Islands"))
+
 
 #add month and date columns
 strikes_df <- strikes_df |> 
@@ -50,9 +57,18 @@ industry_map <- tribble(
 strikes_df <- strikes_df |>
   inner_join(industry_map, by= "industry")
 
-#select
+#clean labor action data for modeling
 strikes_clean <- strikes_df |>
   select(state, sector, industry, start_date, month, year, action_type)
 
-write.csv(strikes_clean, "data/strikes_clean.csv")
+write.csv(strikes_clean, "data/strikes/strikes_clean.csv")
+
+# more detailed labor action data to display in shiny app
+strikes_detailed <- strikes_df |>
+  select(city, state, sector, industry, start_date, duration, employer, 
+         labor_org, action_type, demands) |>
+  arrange(desc(start_date))
+
+write.csv(strikes_detailed, "data/strikes/strikes_detailed.csv")
+
 

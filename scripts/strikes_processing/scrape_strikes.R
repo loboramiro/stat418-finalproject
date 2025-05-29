@@ -2,7 +2,9 @@ library(httr)
 library(jsonlite)
 library(tidyverse)
 
+# Cornell strike tracker site
 strike_json_url <- "https://striketracker.ilr.cornell.edu/labor_actions.json"
+
 
 request <- GET(strike_json_url)
 
@@ -27,10 +29,8 @@ strikes_df <- map_df(raw_strike_data, function(x) {
                                                     collapse = "; ") else NA,
     city = if (!is.null(x$locations) && is.data.frame(x$locations) && nrow(x$locations) > 0) x$locations$City[1] else NA_character_,
     state = if (!is.null(x$locations) && is.data.frame(x$locations) && nrow(x$locations) > 0) x$locations$State[1] else NA_character_
-    #city = if (!is.null(x$locations) && length(x$locations) > 0) x$locations$City else NA_character_,
-    #state = if (!is.null(x$locations) && length(x$locations) > 0) x$locations$State else NA_character_,
   )
 })
 
 #save strike data
-write.csv(strikes_df, "data/strikes_raw.csv")
+write.csv(strikes_df, "data/strikes/strikes_raw.csv")

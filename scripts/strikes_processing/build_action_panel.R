@@ -25,7 +25,7 @@ actions <- strikes_df |>
 
 #sequence of dates for modeling dataset
 start_date <- as.Date("2021-01-01")
-end_date <- as.Date("2026-05-31")
+end_date <- as.Date("2025-12-31")
 
 month_sequence <- seq(from = floor_date(start_date, "month"),
                       to = floor_date(end_date, "month"),
@@ -54,11 +54,11 @@ strike_panel <- strike_panel |>
 monthly_strikes <- strike_panel |>
   left_join(actions, by = c("sector", "state", "year", "month")) |>
   mutate(
-    strike_count = replace_na(strike_count, 0),
-    protest_count = replace_na(protest_count, 0),
+    #strike_count = replace_na(strike_count, 0),
+    #protest_count = replace_na(protest_count, 0),
     action_occurred = replace_na(action_occurred, 0),
-    strike_occurred = replace_na(strike_occurred, 0),
-    protest_occurred = replace_na(protest_occurred, 0)
+    #strike_occurred = replace_na(strike_occurred, 0),
+    #protest_occurred = replace_na(protest_occurred, 0)
   )
 
 #strikes broken by sector, state, and year
@@ -66,11 +66,11 @@ annual_strikes <- monthly_strikes |>
   group_by(sector, state, year) |>
   summarise(
     action_occurred = as.integer(any(action_occurred == 1)),
-    protest_occurred = as.integer(any(protest_occurred == 1)),
-    strike_occurred = as.integer(any(strike_occurred == 1)),
-    total_strikes = sum(strike_count, na.rm = TRUE),
-    total_protests = sum(protest_count, na.rm = TRUE),
-    total_actions = total_strikes + total_protests,
+    #protest_occurred = as.integer(any(protest_occurred == 1)),
+    #strike_occurred = as.integer(any(strike_occurred == 1)),
+    #total_strikes = sum(strike_count, na.rm = TRUE),
+    #total_protests = sum(protest_count, na.rm = TRUE),
+    #total_actions = total_strikes + total_protests,
     .groups = "drop"
   )
 

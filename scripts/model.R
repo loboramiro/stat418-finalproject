@@ -1,40 +1,33 @@
 library(randomForest)
 
-# -------------------------------
-# Load and prepare training data
-# -------------------------------
+# load and prep data
 data <- read.csv("data/model_panel.csv")
 
-# Specify the predictors to use (edit as needed)
+data <- data |>
+  mutate(
+    action_occurred = as.factor(action_occurred),
+    state = as.factor(state),
+    sector = as.factor(sector)
+  )
+
+# specify the predictors to use
 predictors <- c(
-  "all_employees", 
-  "unemployment_rate",
-  "labor_force_participation_rate",
-  "adjusted_cpi", 
-  "months_since_last_action"  # Optional feature
+  "state",
+  "sector",
+  "all_employees",
+  "adjusted_cpi",
+  "state_unempl_rate",
+  "state_labor_part",
+  "state_labor_force"
 )
 
-# Ensure complete cases
-train_data <- train_data[complete.cases(train_data[, predictors]), ]
 
-# -------------------------------
-# Fit Random Forest Models
-# -------------------------------
+train_data <- data |> 
+  filter(year != 2025) |>
+  filter(if_all(all_of(predictors), ~ !is.na(.)))
+
+# fit random forest model
 set.seed(42)
-
-rf_strike <- randomForest(
-  formula = reformulate(predictors, "strike_occurred"),
-  data = train_data,
-  ntree = 500,
-  importance = TRUE
-)
-
-rf_protest <- randomForest(
-  formula = reformulate(predictors, "protest_occurred"),
-  data = train_data,
-  ntree = 500,
-  importance = TRUE
-)
 
 rf_action <- randomForest(
   formula = reformulate(predictors, "action_occurred"),
@@ -43,22 +36,15 @@ rf_action <- randomForest(
   importance = TRUE
 )
 
-# -------------------------------
-# Prediction Function
-# -------------------------------
-predict_action <- function(newdata, type = c("strike", "protest", "either")) {
-  type <- match.arg(type)
-  
-  model <- switch(
-    type,
-    strike = rf_strike,
-    protest = rf_protest,
-    either = rf_action
-  )
-  
-  # Ensure newdata has the required predictors and no missing values
+# prediction function
+predict_action <- function(newdata) {
   newdata <- newdata[, predictors, drop = FALSE]
-  if (anyNA(newdata)) stop("Missing values found in predictors")
   
-  predict(model, newdata, type = "prob")[, 2]  # Return probability of '1'
+  newdata$state <- factor(newdata$state, levels = levels(train_data$state))
+  newdata$sector <- factor(newdata$sector, levels = levels(train_data$sector))
+  
+  #return probability of a labor action
+  predict(rf_action, newdata, type = "prob")[, 2]
 }
+
+

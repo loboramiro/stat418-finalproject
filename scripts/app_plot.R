@@ -1,5 +1,6 @@
 library(ggplot2)
 
+#color blind friendly palette
 palette <- c(
   "#E69F00", # orange
   "#56B4E9", # sky blue
@@ -17,7 +18,7 @@ palette <- c(
 
 plot_state_actions_by_sector <- function(data, selected_state) {
   data %>%
-    filter(selected_state == "All States" | state == selected_state) %>%
+    filter(state == selected_state) %>%
     group_by(year, sector) %>%
     summarise(n_actions = n(), .groups = "drop") %>%
     ggplot(aes(x = factor(year), y = n_actions, fill = sector)) +
@@ -33,5 +34,3 @@ plot_state_actions_by_sector <- function(data, selected_state) {
       legend.title = element_text(size = 16),
       legend.text = element_text(size = 14))
 }
-
-plot_state_actions_by_sector(strikes_clean, "All States")

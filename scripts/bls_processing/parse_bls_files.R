@@ -1,5 +1,6 @@
 library(purrr)
 
+#function to parse JSON files downloaded from BLS API
 parse_bls_files <- function(path){
   json <- fromJSON(path, simplifyVector = FALSE)
   
@@ -21,6 +22,7 @@ parse_bls_files <- function(path){
   return(df)
 }
 
+# create dataframe with contents of all of the BLS data
 json_files <- list.files("data/bls_raw", full.names = TRUE)
 bls_long <- map_dfr(json_files, parse_bls_files)
 
