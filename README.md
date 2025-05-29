@@ -1,14 +1,14 @@
-# Modeling Labor Unrest: Predicting Labor Action Acivity in the United States
+# Predicting Labor Actions in the United States
 
 **Author**: Ramiro Lobo  
 **Course**: UCLA STAT 418 – Tools in Data Science  
 **Term**: Spring 2025
 
-Access the Shiny app: [Link]**](https://ramirolobo.shinyapps.io/stat418-finalproject/)]
+Access the Shiny app: [Link](https://ramirolobo.shinyapps.io/stat418-finalproject/)
 
 ## Overview
 
-This project aims to predict and diagnose labor unrest in the United States by modeling the probability of strike and protest activity at the industry and state level. Using data from the Cornell ILR Labor Action Tracker and economic indicators from the U.S. Bureau of Labor Statistics (BLS) and Bureau of Economic Analysis (BEA), the project deploys a predictive model via a Shiny web application.
+This project aims to predict labor unrest in the United States by modeling the probability of strike and protest activity at the industry and state level. Using data from the Cornell ILR Labor Action Tracker and economic indicators from the U.S. Bureau of Labor Statistics (BLS) and Bureau of Economic Analysis (BEA), the project deploys a predictive model via a Shiny web application.
 
 ## Data Sources
 
