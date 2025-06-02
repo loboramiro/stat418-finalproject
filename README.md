@@ -43,4 +43,5 @@ The app returns:
 
 - Predicted probability of a labor action in the selected state and sector
 - Recent labor actions (2021–2025)
-- Interactive plot of historical labor action trends
+- Full labor action dataset
+- Plot of historical labor action trends
