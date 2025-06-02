@@ -51,7 +51,7 @@ The app returns:
 - Recent labor actions in the selected state and sector (2021–2025)
 - Plot of historical labor action trends in the selected state
 
-- ## Accessing the API
+## Accessing the API
 
 To check the health of the API [visit this link](https://labor-actions-api-691844217421.us-west2.run.app/). If the API is running you should see `"status": "Labor Action API is running!"`
 
