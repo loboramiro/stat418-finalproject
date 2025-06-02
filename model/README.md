@@ -5,5 +5,5 @@
 `model.R` 
   This script is sourced by the Shiny app to load the trained model. 
 
-`final_model.rds`**  
+`final_model.rds`  
   This is the saved, tuned random forest model, trained on pre-2025 data using the best parameters found in `tune_model.R`.
