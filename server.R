@@ -11,7 +11,7 @@ data <- data |>
   filter(if_all(everything(), ~ !is.na(.)))
 
 source("scripts/app_plot.R")
-source("scripts/model.R")
+source("model/model.R")
 
 function(input, output, session) {
   default_inputs <- reactive({

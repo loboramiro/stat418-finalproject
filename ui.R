@@ -88,7 +88,8 @@ ui <- dashboardPage(
                     "application allows users to explore sector- and state-level",
                     "strike and protest activity and estimate the probability of",
                     "future actions based on labor market indicators. The app",
-                    "combines publicly available strike data with economic",
+                    "combines publicly available strike data from
+                    Cornell's ILR School Labor Action Tracker with economic",
                     "indicators from the Bureau of Labor Statistics.")
               )
       )
