@@ -33,7 +33,7 @@ Key variables include:
 
 A random forest model is trained on strike and economic data from 2021–2024 to predict the probability of a labor action (strike or protest) in 2025.
 
-## Deployment Architecture
+## Deployment
 
 - The prediction model is hosted via an API using the `plumber` R package, containerized with Docker, and deployed to Google Cloud Run.
 - The Shiny app serves as the front end, sending prediction requests to the API and displaying the results.
