@@ -6,6 +6,8 @@
 
 Access the Shiny app: [Link](https://ramirolobo.shinyapps.io/stat418-finalproject/)
 
+API Endpoint: [Link](https://labor-actions-api-691844217421.us-west2.run.app/predict)
+
 ## Overview
 
 This project aims to predict labor unrest in the United States by modeling the probability of strike and protest activity at the industry and state level. Using data from the Cornell ILR Labor Action Tracker and economic indicators from the U.S. Bureau of Labor Statistics (BLS) and Bureau of Economic Analysis (BEA), the project deploys a predictive model via a Shiny web application.
@@ -31,6 +33,10 @@ Key variables include:
 
 A random forest model is trained on strike and economic data from 2021–2024 to predict the probability of a labor action (strike or protest) in 2025.
 
+## Deployment Architecture
+
+- The prediction model is hosted via an API using the `plumber` R package, containerized with Docker, and deployed to Google Cloud Run.
+- The Shiny app serves as the front end, sending prediction requests to the API and displaying the results.
 
 ## Shiny App
 
@@ -42,5 +48,5 @@ Users can select an industry and state to see the predicted probability of a lab
 The app returns:
 
 - Predicted probability of a labor action in the selected state and sector
-- Recent labor actions (2021–2025)
-- Interactive plot of historical labor action trends
+- Recent labor actions in the selected state and sector (2021–2025)
+- Plot of historical labor action trends in the selected state

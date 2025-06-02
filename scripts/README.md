@@ -7,10 +7,7 @@ Generates the plots shown in the Shiny application. It displays labor action pat
 Processes Consumer Price Index (CPI) and Regional Price Parities (RPP) data to create an adjusted CPI metric by state. This helps account for cost-of-living differences across regions.
 
 `merge_clean_model_panel.R`
-Merges cleaned BLS and labor action datasets to build the final dataset used for modeling.
-
-`model.R`
-Trains the predictive model (Random Forest) on the final dataset. Outputs predicted probabilities for 2025.
+Merges cleaned BLS, CPI, and labor action datasets to build the final dataset used for modeling.
 
 ## Subfolders
 
