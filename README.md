@@ -5,6 +5,7 @@
 **Term**: Spring 2025
 
 Access the Shiny app: [Link](https://ramirolobo.shinyapps.io/stat418-finalproject/)
+
 API Endpoint: [Link](https://labor-actions-api-691844217421.us-west2.run.app/predict)
 
 ## Overview
