@@ -42,6 +42,5 @@ Users can select an industry and state to see the predicted probability of a lab
 The app returns:
 
 - Predicted probability of a labor action in the selected state and sector
-- Recent labor actions (2021–2025)
-- Full labor action dataset
-- Plot of historical labor action trends
+- Recent labor actions in the selected state and sector (2021–2025)
+- Plot of historical labor action trends in the selected state
