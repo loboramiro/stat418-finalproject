@@ -14,17 +14,6 @@ predictors <- c(
 rf_action <- readRDS("model/final_model.rds")
 
 
-# prediction function
-# predict_action <- function(newdata, model = rf_action) {
-#   newdata <- newdata[, predictors, drop = FALSE]
-#   
-#   newdata$state <- factor(newdata$state, levels = levels(train_data$state))
-#   newdata$sector <- factor(newdata$sector, levels = levels(train_data$sector))
-#   
-#   #return probability of a labor action
-#   predict(model, newdata, type = "prob")[, 2]
-# }
-
 predict_action <- function(newdata, model = rf_action) {
   newdata <- newdata[, predictors, drop = FALSE]
   
@@ -35,6 +24,4 @@ predict_action <- function(newdata, model = rf_action) {
   predict(model, newdata, type = "prob")[, 2]
 }
 
-
-levels(rf_action$forest$xlevels$state)
 

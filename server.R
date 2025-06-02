@@ -11,7 +11,7 @@ data <- data |>
   filter(if_all(everything(), ~ !is.na(.)))
 
 source("scripts/app_plot.R")
-source("model/model.R")
+#source("model/model.R")
 
 function(input, output, session) {
   default_inputs <- reactive({
@@ -82,7 +82,20 @@ function(input, output, session) {
       state_labor_part = inputs$state_labor_part,
       state_labor_force = inputs$state_labor_force
     )
-    prob <- predict_action(new_obs)
+    
+    #prob <- predict_action(new_obs)
+    
+    res <- tryCatch({
+      httr::POST(
+        url = "https://labor-actions-api-691844217421.us-west2.run.app/predict",
+        body = as.list(new_obs),
+        encode = "json"
+      )
+    })
+    
+    prob <- httr::content(res)$probability[[1]]
+    
+    
     valueBox(
       paste0(round(prob * 100, 1), "%"),
       subtitle = "Predicted Probability of Strike or Protest in 2025",
