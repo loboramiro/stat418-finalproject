@@ -17,13 +17,6 @@ Parses and reshapes downloaded BLS time series data files into a consistent form
 `build_bls_panel.R`
 Combines parsed BLS data into a clean dataset by state, sector, and year. This is merged with labor action data for modeling.
 
-## Inputs
-- `sm.series` and `la.series` files
-- BLS API key (stored in environment variable or config)
-
-## Output
-- Cleaned and merged BLS panel data (by state-sector-year): `data/annual_bls_panel.csv`
-- Intermediate files saved locally for tracking and debugging
 
 
 
