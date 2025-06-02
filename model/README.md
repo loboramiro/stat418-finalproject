@@ -3,7 +3,7 @@
   The best model is saved as `final_model.rds`.
 
 `model.R` 
-  This script is sourced by the Shiny app to load the trained model. 
+  This script is sourced by the API to load the trained model. 
 
 `final_model.rds`  
   This is the saved, tuned random forest model, trained on pre-2025 data using the best parameters found in `tune_model.R`.
