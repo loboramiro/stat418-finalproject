@@ -3,6 +3,12 @@ library(randomForest)
 
 source("model/model.R")
 
+#* @get /
+#* @serializer unboxedJSON
+function() {
+  list(status = "Labor Action API is running!")
+}
+
 #* @post /predict
 function(state, sector, all_employees, adjusted_cpi, state_unempl_rate, 
          state_labor_part, state_labor_force) {
