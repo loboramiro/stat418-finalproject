@@ -50,3 +50,24 @@ The app returns:
 - Predicted probability of a labor action in the selected state and sector
 - Recent labor actions in the selected state and sector (2021–2025)
 - Plot of historical labor action trends in the selected state
+
+- ## Accessing the API
+
+To check the health of the API [visit this link](https://labor-actions-api-691844217421.us-west2.run.app/). If the API is running you should see `"status": "Labor Action API is running!"`
+
+To send a request to the API, use a `curl` command in your terminal.
+
+Example: 
+`curl -X POST https://labor-actions-api-691844217421.us-west2.run.app/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "state": "California",
+    "sector": "Construction",
+    "all_employees": 500,
+    "state_unempl_rate": 5,
+    "state_labor_part": 60,
+    "state_labor_force": 2450,
+    "adjusted_cpi": 290
+  }'` 
+
+  The response should be something like `{"probability":[0.78]}`
