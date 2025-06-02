@@ -31,7 +31,9 @@ Key variables include:
 - `action_occurred`: Binary target variable (1 if a strike or protest occurred).
 - Economic features: Statewide sector employment levels, unemployment rate, labor force participation rate, total labor force size, and state-adjusted consumer price index (CPI).
 
-A random forest model is trained on strike and economic data from 2021–2024 to predict the probability of a labor action (strike or protest) in 2025.
+A random forest model is trained on strike and economic data from 2021–2024 to predict the probability of a labor action (strike or protest) in 2025. Hyperparameter tuning was conducted
+using a grid search over `mtry`, `nodesize`, and `ntree` and evaluated using AUC on the 2025 data. The best-performing combination was selected based on highest AUC, and the final model 
+achieved an AUC of 0.83. 
 
 ## Deployment
 
