@@ -23,4 +23,4 @@ Annual aggregation of labor actions (strikes and protests) by state and sector. 
 Processed economic indicators from BLS data aggregated by state, sector, and year. Includes employment, and labor force metrics. 
 
 `model_panel.csv`
-Final merged dataset combining `annual_actions_panel` and `annual_bls_panel` with engineered features, used as the input for modeling.
+Final merged dataset combining `annual_actions_panel`, `annual_bls_panel`, `annual_cpi_adjusted`, with engineered features, used as the input for modeling.
